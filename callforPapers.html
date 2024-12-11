@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICGESAI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .underline-cyan {
+        text-decoration: underline;
+        text-decoration-color: rgb(34 197 94 / var(--tw-bg-opacity));
+      }
+      .slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: slideShow 12s infinite;
+      }
+
+      .slide:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .slide:nth-child(2) {
+        animation-delay: 3s;
+      }
+
+      .slide:nth-child(3) {
+        animation-delay: 6s;
+      }
+
+      .slide:nth-child(4) {
+        animation-delay: 9s;
+      }
+
+    
+      @keyframes slideShow {
+        0% { opacity: 1; }
+        33% { opacity: 1; }
+        33.33% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+    
+      .button-container {
+        margin-top: 2.5rem; /* mt-10 */
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .button-container button {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+        /* padding: 0.75rem 1.5rem; */
+        padding: 15px;
+        font-size: 1.125rem;
+        font-weight: 300;
+        border: none;
+        border-radius: 0.375rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+    
+      .button-container button:hover {
+        background-color: gray;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+    
+      .button-container button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.5);
+      }
+      .tab {
+        overflow: hidden;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    
+      .tab button {
+        background-color: gray;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        margin: 0 5px;
+        transition: 0.3s;
+        font-size: 17px;
+        flex: 1;
+      }
+    
+      .tab button:hover {
+        background-color: #ddd;
+      }
+    
+      .tab button.active {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+      }
+    
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+      }
+    
+      .underline-cyan {
+        text-decoration: underline;
+        text-decoration-color: cyan;
+      }
+
+      .map-container {
+          height: 100%;
+      }
+    
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
+      .animate-fadeIn {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+
+      /* Remove Next & Previous buttons */
+      .prev, .next {
+        display: none;
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active, .dot:hover {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+      }
+
+      .hover-zoom {
+        display: inline-block;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .hover-zoom:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-black text-justify">
+    <nav class="fixed w-full bg-gray-50 text-black py-3 z-50">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <!-- <img src="springer.png" alt="Springer Logo" class="h-10 mr-2" /> -->
+          <a href="#" class="text-2xl font-bold">
+            <span class="bg-cyan-900 text-white px-2 py-1 rounded">ICGESAI</span> 2025
+          </a>
+        </div>
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="index.html" class="hover:text-cyan-400">Home</a></li>
+          <li class="relative group">
+            <a href="callforPapers.html" class="flex items-center text-cyan-400">
+              Call for Papers
+              <svg class="ml-1 w-4 h-4 fill-current text-black group-hover:text-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <ul class="absolute left-0 mt-2 w-48 bg-gray-100 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible">
+              <li><a href="callforPapers.html#conf" class="block px-4 py-2 hover:bg-cyan-100">About ICGESAI</a></li>
+              <li><a href="callforPapers.html#dates" class="block px-4 py-2 hover:bg-cyan-100">Important Dates</a></li>
+              <li><a href="callforPapers.html#scope" class="block px-4 py-2 hover:bg-cyan-100">Scope</a></li>
+              <li><a href="callforPapers.html#conf-tracks" class="block px-4 py-2 hover:bg-cyan-100">Conference Tracks</a></li>
+            </ul>
+          </li>
+          <li><a href="indexing.html" class="hover:text-cyan-400">Indexing</a></li>
+          <li><a href="committees.html" class="hover:text-cyan-400">Committees</a></li>
+          <li><a href="registration.html" class="hover:text-cyan-400">Registration</a></li>
+          <li><a href="sponsors.html" class="hover:text-cyan-400">Sponsors</a></li>
+          <li><a href="specialSessions.html" class="hover:text-cyan-400">Special Sessions</a></li>
+          <li><a href="contactus.html" class="hover:text-cyan-400">Contact</a></li>
+        </ul>
+        <button class="md:hidden text-cyan-400 focus:outline-none" id="menu-button">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    
+      <!-- Mobile Menu -->
+      <ul class="md:hidden flex flex-col space-y-2 px-4 pt-2 pb-4 bg-gray-100 hidden" id="mobile-menu">
+        <li><a href="index.html" class="hover:text-cyan-400">Home</a></li>
+        <li>
+          <a href="callforPapers.html" class="flex items-center text-cyan-400">
+            Call for Papers
+            <svg class="ml-1 w-4 h-4 fill-current text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <ul class="pl-4 mt-2 space-y-2">
+            <li><a href="callforPapers.html#conf" class="text-cyan-400">About ICGESAI</a></li>
+            <li><a href="callforPapers.html#dates-m" class="text-cyan-400">Important Dates</a></li>
+            <li><a href="callforPapers.html#scope" class="text-cyan-400">Scope</a></li>
+            <li><a href="callforPapers.html#conf-tracks" class="text-cyan-400">Conference Tracks</a></li>
+          </ul>
+        </li>
+        <li><a href="indexing.html" class="hover:text-cyan-400">Indexing</a></li>
+        <li><a href="committees.html" class="hover:text-cyan-400">Committees</a></li>
+        <li><a href="registration.html" class="hover:text-cyan-400">Registration</a></li>
+        <li><a href="sponsors.html" class="hover:text-cyan-400">Sponsors</a></li>
+        <li><a href="specialSessions.html" class="hover:text-cyan-400">Special Sessions</a></li>
+        <li><a href="contactus.html" class="hover:text-cyan-400">Contact</a></li>
+      </ul>
+    </nav>
+    <script>
+      document
+        .getElementById("menu-button")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    </script>
+
+    <header class="h-[950px] md:h-full text-center text-white relative">
+      <div class="flex flex-col md:flex-row relative z-10">
+
+        <div class="w-full md:w-[50%] relative overflow-hidden">
+          <div class="slideshow">
+            <div
+              class="slide"
+              style="background-image: url('clg.jpeg')"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('kanipakamwt.jpg')"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('Kaigal\ Waterfalls.jpg')"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('mt-clg.jpg')"
+            ></div>
+            
+          </div>
+        </div>
+        <div class="w-full md:w-[61%] md:">
+          <div class="w-full">
+            <div class="slideshow-container md:hidden">
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 4</div>
+                <img src="clg.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 4</div>
+                <img src="kanipakamwt.jpg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 4</div>
+                <img src="Kaigal Waterfalls.jpg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">4 / 4</div>
+                <img src="mt-clg.jpg" style="width: 100%; height: 200px" />
+              </div>
+              
+
+              <div style="text-align: center" class="md:hidden">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+              </div>
+            </div>
+          </div>
+
+          <section class="relative md:h-screen items-center justify-center overflow-hidden">
+            <!-- Background video -->
+            <video autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover">
+              <source src="mt-vid.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <!-- Overlay -->
+            <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60"></div>
+            <!-- Content -->
+            <div class="relative z-10 text-center md:p-2 ">
+              <h1 class="text-2xl font-bold">
+                <img class="md:pt-[100px] md:ml-[40px]" src="mt-banner.jpg" alt="" /> <br />
+                International Conference on <br> <span class="text-[25px]"><i>Green Computing, and Environmental Sustainability using Artificial Intelligence</i> </span> <br> ICGESAI 2025
+              </h1>
+              <br />
+              <h2 class="text-2xl mb-2">March 20-21, 2025</h2>
+              <h2 class="text-xl font-bold mb-4">Hybrid Mode</h2>
+              <h2 class="text-xl font-bold mb-4">Conference Proceedings</h2>
+              <p class="mb-2">Submission is now open: Till December 15, 2024</p>
+              <!-- <div class="button-container2"></div> -->
+              <button
+                class="bg-gray-50 text-black px-4 py-2 rounded hover:bg-gray-300 mb-2"
+              >
+                Submit Your Paper
+              </button>
+            </div>
+          </section>
+        </div>
+        
+      </div>
+
+      <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {
+            slideIndex = 1;
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex - 1].style.display = "block";
+          dots[slideIndex - 1].className += " active";
+          setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+      </script>
+    </header>
+
+    <div class="md:mt-1 bg">
+      <marquee behavior="" direction=""
+        >A virtual meeting is available for all registered authors who intend to
+        submit their work but are unable to attend the conference.</marquee
+      >
+    </div>
+
+    <div class="bg-cyan-900 text-white text-center p-3">
+      <p class="font-bold text-2xl">
+        <i class="fas fa-file-alt mr-2"></i> ICGESAI 2025 CALL FOR PAPERS
+      </p>
+    </div>    
+
+    <div id="conf"></div>
+    <div
+            class="mt-10 m-2 flex flex-col lg:flex-row justify-between space-y-4 lg:space-y-0 lg:space-x-[50px]"
+          >
+          <a href="callforPapers.html#conf"
+          ><button class="bg-cyan-900 p-3 w-full md:w-[200px] text-white rounded-lg">
+                
+                About Conference</button></a
+            >
+            <a href="callforPapers.html#objectives"
+              ><button class="bg-cyan-900 p-3 w-full md:w-[110px] text-white rounded-lg">Objectives</button></a
+            >
+            <a href="callforPapers.html#outcomes"><button class="bg-cyan-900 p-3 w-full md:w-[110px] text-white rounded-lg">Outcomes</button></a>
+            <a href="callforPapers.html#scope"><button class="bg-cyan-900 p-3 w-full md:w-[100px] text-white rounded-lg">Scope</button></a>
+            <a href="callforPapers.html#impact"><button class="bg-cyan-900 p-3 w-full md:w-[100px] text-white rounded-lg">Impact</button></a>
+            <a href="specialSessions.html#conference-tracks"><button class="bg-cyan-900 p-3 w-full md:w-[180px] text-white rounded-lg">Conference Tracks</button></a>
+            <a href="index.html#indexing"><button class="bg-cyan-900 p-3 w-full md:w-[100px] text-white rounded-lg">Indexing</button></a>
+          </div>
+
+    <div class=" text-center text-black p-3 md:p-10" id="objectives">
+      <p class="underline-cyan font-bold text-2xl mb-2">
+        <i class="fas fa-info-circle text-cyan-700 mr-2"></i>
+        About Conference</p>
+      <p class="text-justify">
+        The International Conference on Green Computing and Environmental Sustainability using Artificial Intelligence (ICGESAI) 2025 is a global platform for researchers, academicians, industry experts, and policymakers to discuss and explore innovative approaches in the fields of green computing and environmental sustainability. The conference emphasizes the integration of Artificial Intelligence (AI) to tackle pressing environmental challenges, promote sustainable technologies, and foster eco-friendly innovations
+      </p>
+    </div>
+
+    <section class="text-black p-3 md:p-10">
+      <p class="underline-cyan font-bold text-2xl mb-4 text-center">
+        <i class="fas fa-bullseye text-cyan-700 mr-2"></i> <!-- Font Awesome icon -->
+        Objectives
+      </p>
+    
+      <div class="text-mx-auto">
+        <p class="mb-4">
+          The International Conference on Green Computing and Environmental Sustainability using Artificial Intelligence (ICGESAI) 2025 aims to bring together experts from academia, industry, and government to advance research and innovation in green computing and environmental sustainability. The objectives of the conference include:
+        </p>
+        <ul class="list-disc list-inside space-y-2">
+          
+          <!-- Objective 1 -->
+          <li>
+            <b>Promote Green Computing</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Encourage the development and adoption of energy-efficient computing technologies, hardware, and algorithms to reduce carbon footprints in IT systems.
+              </li>
+            </ul>
+          </li>
+    
+          <!-- Objective 2 -->
+          <li>
+            <b>Leverage AI for Sustainability</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Explore AI-driven strategies for addressing critical environmental challenges, including climate change, biodiversity loss, and resource management.
+              </li>
+            </ul>
+          </li>
+    
+          <!-- Objective 3 -->
+          <li>
+            <b>Foster Interdisciplinary Collaboration</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Provide a platform for cross-disciplinary interaction among researchers, engineers, environmentalists, and policymakers to drive holistic solutions
+              </li>
+            </ul>
+          </li>
+    
+          <!-- Objective 4 -->
+          <li>
+            <b>Showcase Innovations</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Highlight cutting-edge research and applications in renewable energy, waste management, sustainable agriculture, and eco-friendly manufacturing powered by AI.
+              </li>
+            </ul>
+          </li>
+    
+          <!-- Objective 5 -->
+          <li>
+            <b>Bridge Research and Practice</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Facilitate knowledge transfer between academia and industry to translate theoretical advancements into practical, real-world applications.
+              </li>
+            </ul>
+          </li
+    
+          <!-- Objective 6-->
+          <li>
+            <b>Encourage Policy Discussions</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Engage policymakers and stakeholders to discuss regulatory frameworks and ethical considerations for the deployment of green computing and AI technologies.
+              </li>
+            </ul>
+          </li
+    
+          <!-- Objective 7 -->
+          <li>
+            <b>	Raise Awareness</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Increase awareness about the role of technology in achieving the United Nations’ Sustainable Development Goals (SDGs).
+              </li>
+            </ul>
+          </li
+    
+          <!-- Objective 8 -->
+          <li>
+            <b>Build a Sustainable Future</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Inspire new ideas and collaborations to create a sustainable and eco-conscious global ecosystem through innovation and technology.
+              </li>
+            </ul>
+          </li
+          
+        </ul>
+      </div>
+    </section>
+    
+
+    <section class="text-black p-3 md:p-10">
+      <p class="underline-cyan font-bold text-2xl mb-4 text-center" id="outcomes">
+        <i class="fas fa-trophy text-cyan-700 mr-2"></i>
+        Outcomes
+      </p>
+      <p>
+        The International Conference on Green Computing and Environmental Sustainability using Artificial Intelligence (ICGESAI) 2025 is expected to yield significant outcomes that will contribute to advancing research, innovation, and practical applications in green technologies and sustainable development. The anticipated outcomes include:
+      </p>
+      <ul class="list-disc list-inside space-y-6 mt-8">
+        <li>
+          <b>Knowledge Dissemination:</b> <br />
+          Publication of high-quality research papers and findings in indexed journals or conference proceedings, providing a valuable resource for academia and industry.
+        </li>
+    
+        <li>
+          <b>Technological Advancements:</b> <br />
+          Introduction of innovative AI-driven solutions for environmental sustainability, such as energy-efficient computing systems, climate modeling tools, and smart resource management techniques.
+        </li>
+    
+        <li>
+          <b>Interdisciplinary Collaborations:</b> <br />
+          Establishment of partnerships among researchers, technologists, environmentalists, and policymakers, fostering interdisciplinary projects and solutions.
+        </li>
+    
+        <li>
+          <b>Policy Recommendations:</b> <br />
+          Development of actionable policy frameworks and guidelines for integrating green computing and AI into national and international sustainability initiatives.
+        </li>
+    
+        <li>
+          <b>Capacity Building:</b> <br />
+          Skill enhancement for participants through workshops, tutorials, and discussions on emerging trends in AI and green technologies.
+        </li>
+    
+        <li>
+          <b>Industry-Academia Synergy:</b> <br />
+          Strengthened connections between academia and industry, leading to the commercialization of research and adoption of sustainable innovations.
+        </li>
+    
+        <li>
+          <b>Awareness and Advocacy:</b> <br />
+          Increased awareness about the importance of green computing and the potential of AI in addressing global environmental challenges.
+        </li>
+    
+        <li>
+          <b>Roadmap for Sustainable Development:</b> <br />
+          Creation of a strategic roadmap for leveraging AI and green technologies to achieve the United Nations’ Sustainable Development Goals (SDGs).
+        </li>
+    
+        <li>
+          <b>Networking Opportunities:</b> <br />
+          Facilitation of global networking among thought leaders, innovators, and stakeholders, encouraging long-term collaborations.
+        </li>
+    
+        <li>
+          <b>Actionable Insights:</b> <br />
+          Practical insights and strategies for businesses and governments to implement eco-friendly practices and adopt sustainable computing solutions.
+        </li>
+      </ul>
+    </section>
+    
+    
+
+  <section class="bg-white text-black p-5 md:p-10 rounded-lg">
+    <p class="underline-cyan font-bold text-3xl mb-6 text-center" id="scope">
+      <i class="fas fa-expand-arrows-alt mr-3 text-cyan-700"></i>
+      Scope
+    </p>
+    <p class="mb-6">
+      The International Conference on Green Computing and Environmental Sustainability using Artificial Intelligence (ICGESAI) 2025 will encompass a broad range of topics and areas of focus, reflecting the interdisciplinary nature of its themes. The scope of the conference includes but is not limited to:
+    </p>
+    <ul class="mb-6 list-disc pl-6">
+      <li>
+        <b>Green Computing</b>
+        <ul class="list-disc pl-6">
+          <li>Development of energy-efficient computing systems and architectures.</li>
+          <li>Low-power hardware design and sustainable data center operations.</li>
+          <li>Optimization techniques for reducing the environmental impact of IT infrastructures.</li>
+          <li>Resource-efficient software engineering and green software design.</li>
+        </ul>
+      </li>
+      <li>
+        <b>Artificial Intelligence for Environmental Sustainability</b>
+        <ul class="list-disc pl-6">
+          <li>AI-driven climate change modeling and mitigation strategies.</li>
+          <li>Machine learning applications for renewable energy management.</li>
+          <li>Predictive analytics for waste reduction and recycling.</li>
+          <li>AI in biodiversity monitoring and conservation.</li>
+        </ul>
+      </li>
+      <li>
+        <b>Renewable Energy and Smart Grids</b>
+        <ul class="list-disc pl-6">
+          <li>Integration of AI in optimizing solar, wind, and hydro energy systems.</li>
+          <li>Intelligent grid management and demand-side energy management.</li>
+          <li>Innovations in battery storage and energy harvesting techniques.</li>
+        </ul>
+      </li>
+      <li>
+        <b>Sustainable Urban Development</b>
+        <ul class="list-disc pl-6">
+          <li>Smart city technologies powered by AI for efficient urban planning.</li>
+          <li>Intelligent transportation systems and eco-friendly mobility solutions.</li>
+          <li>AI applications in sustainable water and waste management.</li>
+        </ul>
+      </li>
+      <li>
+        <b>Circular Economy and Sustainable Manufacturing</b>
+        <ul class="list-disc pl-6">
+          <li>AI in optimizing resource usage and promoting recycling in manufacturing.</li>
+          <li>Sustainable supply chain management using predictive analytics.</li>
+          <li>Designing eco-friendly products with the aid of AI and digital twins.</li>
+        </ul>
+      </li>
+      <li>
+        <b>Environmental Monitoring and Risk Management</b>
+        <ul class="list-disc pl-6">
+          <li>AI-based early warning systems for natural disasters.</li>
+          <li>Monitoring air, water, and soil quality using IoT and AI.</li>
+          <li>Mitigating environmental risks through data-driven decision-making.</li>
+        </ul>
+      </li>
+      <li>
+        <b>Ethics and Policy in AI and Sustainability</b>
+        <ul class="list-disc pl-6">
+          <li>Ethical considerations for deploying AI in environmental contexts.</li>
+          <li>Policy frameworks for green computing and sustainable AI applications.</li>
+          <li>Addressing the digital divide and promoting inclusive innovation.</li>
+        </ul>
+      </li>
+      <li>
+        <b>Cross-Disciplinary Applications</b>
+        <ul class="list-disc pl-6">
+          <li>Role of green computing and AI in agriculture and food security.</li>
+          <li>AI-enhanced health monitoring systems in relation to environmental impacts.</li>
+          <li>Interdisciplinary studies bridging environmental science, computing, and AI.</li>
+        </ul>
+      </li>
+    </ul>
+    <p class="mt-6">
+      This scope provides a comprehensive platform for academic and industry contributions, ensuring wide-ranging discussions and impactful outcomes that address the intersection of technology, sustainability, and artificial intelligence.
+    </p>
+  </section>
+
+    
+    
+
+    <div class="hidden md:block mx-[300px]">
+      <h2 class="text-2xl text-center font-bold mb-4 underline-cyan">
+        <i class="fas fa-calendar-alt text-cyan-500 mr-2"></i> 
+        Important Dates / Deadlines
+      </h2>
+      <table
+        class="md:min-w-full bg-white shadow-md rounded-lg overflow-hidden"
+        id="dates"
+      >
+        <thead>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-center">
+              Event
+            </th>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-center">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Manuscript submissions open
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              December 25th, 2024
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Deadline for submissions
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              January 15, 2024
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Under review timeline
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              January 16, 2024 - January 31, 2025
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Notification of acceptance
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              February 05, 2025
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Author registration deadline
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              February 06th to March 07th, 2025
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Conference Program scheduled
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              March 20th, 21st, 2025
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Final revised manuscript
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              April 5th, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <style>
+        table,
+        th,
+        td {
+          border: 1px solid gray;
+        }
+      </style>
+    </div>
+
+    <div class="md:w-[600px] w-full mx-auto md:p-4 md:hidden">
+      <h2 class="text-2xl text-left font-bold mb-4 underline-cyan" id="dates-m">
+        Important Dates / Deadlines
+      </h2>
+
+      <!-- Table 1: Manuscript submissions open -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Manuscript submissions open
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              December 25th, 2024
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 2: Deadline for manuscript submissions -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Deadline for manuscript submissions
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              January 15, 2024
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 3: Under review timeline -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Under review timeline
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              January 16, 2024 - January 31, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 4: Notification of acceptance -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Notification of acceptance
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              February 05, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 5: Author registration deadline -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Author registration deadline
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              February 06th to March 07th, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 6: Conference program scheduled -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Conference program scheduled
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              March 20th, 21st, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 7: Final revised manuscript -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Final revised manuscript
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-cyan-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              April 5th, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <section class="bg-white text-black p-4 md:p-10 rounded-lg shadow-md" id="impact">
+      <p class="underline-cyan font-bold text-3xl mb-6 text-center">
+        <i class="fas fa-chart-line mr-2 text-cyan-700"></i>
+        Anticipated Impacts
+      </p>
+      <ul class="list-decimal list-inside space-y-6 text-gray-800 text-lg">
+        <li>
+          <b class="text-xl text-cyan-700">Advancing Research and Innovation</b><br />
+          • Stimulating cutting-edge research in green computing and AI-driven sustainability.<br />
+          • Encouraging development of novel technologies and methodologies to address environmental challenges.<br />
+          • Promoting interdisciplinary studies that integrate AI with environmental sciences.
+        </li>
+        <li>
+          <b class="text-xl text-cyan-700">Driving Sustainable Practices</b><br />
+          • Encouraging industries to adopt energy-efficient computing and sustainable IT infrastructure.<br />
+          • Showcasing actionable AI solutions for optimizing resource use, reducing waste, and minimizing environmental footprints.<br />
+          • Inspiring businesses to incorporate sustainability into their operational frameworks.
+        </li>
+        <li>
+          <b class="text-xl text-cyan-700">Empowering Policymakers</b><br />
+          • Providing evidence-based insights for creating policies that encourage green technologies and AI adoption.<br />
+          • Offering a platform to discuss regulations and standards for sustainable computing and responsible AI deployment.<br />
+          • Strengthening alignment with global sustainability goals, such as the United Nations’ SDGs.
+        </li>
+        <li>
+          <b class="text-xl text-cyan-700">Enhancing Public Awareness and Advocacy</b><br />
+          • Raising global awareness about the potential of AI and green computing in combating climate change and environmental degradation.<br />
+          • Encouraging eco-consciousness and environmental responsibility among communities and organizations.
+        </li>
+        <li>
+          <b class="text-xl text-cyan-700">Building Collaborative Ecosystems</b><br />
+          • Fostering international collaborations among researchers, technologists, and environmentalists.<br />
+          • Creating a network of stakeholders committed to advancing sustainability through innovation.<br />
+          • Strengthening academia-industry partnerships to translate research into real-world applications.
+        </li>
+        <li>
+          <b class="text-xl text-cyan-700">Promoting Education and Skills Development</b><br />
+          • Equipping participants with knowledge and skills in AI and green technologies through workshops and tutorials.<br />
+          • Encouraging educational institutions to integrate green computing and sustainability into their curricula.
+        </li>
+        <li>
+          <b class="text-xl text-cyan-700">Economic and Environmental Benefits</b><br />
+          • Supporting the development of cost-effective, sustainable technologies that benefit industries and the environment.<br />
+          • Encouraging investments in green innovation, leading to economic growth in eco-friendly sectors.<br />
+          • Reducing greenhouse gas emissions and fostering a healthier planet through AI-driven solutions.
+        </li>
+        <li>
+          <b class="text-xl text-cyan-700">Shaping the Future of AI and Sustainability</b><br />
+          • Defining new research directions and innovation opportunities at the intersection of AI and environmental conservation.<br />
+          • Influencing how future technologies are designed to align with sustainability goals.<br />
+          • Demonstrating AI’s potential as a transformative tool for achieving long-term ecological balance.
+        </li>
+      </ul>
+    </section>
+    
+    
+
+    <section class="bg-gray-50 text-black p-6 md:p-10 rounded-lg shadow-lg" id="tracks">
+      <p class="underline-cyan font-bold text-3xl mb-6 text-center">
+        <i class="fas fa-road mr-2 text-cyan-600"></i>
+        Conference Tracks
+      </p>
+      <p class="leading-relaxed mb-6 text-lg">
+        The International Conference on Green Computing and Environmental Sustainability using Artificial Intelligence (ICGESAI) 2025 will feature diverse thematic tracks, providing a platform for in-depth exploration of critical topics at the intersection of green computing, artificial intelligence, and sustainability. The proposed tracks include:
+      </p>
+      <ul class="list-decimal list-inside space-y-6 text-gray-800">
+        <li>
+          <b class="text-xl text-cyan-600">Green Computing and Energy Efficiency</b><br />
+          <ul class="list-disc list-inside pl-6">
+            <li>Energy-efficient algorithms and software design.</li>
+            <li>Green data centers and sustainable IT infrastructure.</li>
+            <li>Low-power computing systems and hardware innovations.</li>
+            <li>Cloud, edge, and fog computing for resource optimization.</li>
+          </ul>
+        </li>
+        <li>
+          <b class="text-xl text-cyan-600">Artificial Intelligence for Environmental Applications</b><br />
+          <ul class="list-disc list-inside pl-6">
+            <li>AI in climate change modeling and forecasting.</li>
+            <li>Machine learning for resource conservation and optimization.</li>
+            <li>AI solutions for pollution monitoring and control.</li>
+            <li>Predictive analytics for disaster management and recovery.</li>
+          </ul>
+        </li>
+        <li>
+          <b class="text-xl text-cyan-600">Renewable Energy Systems and Optimization</b><br />
+          <ul class="list-disc list-inside pl-6">
+            <li>AI-driven optimization in solar, wind, and hydro energy systems.</li>
+            <li>Smart grid technologies and AI in energy distribution.</li>
+            <li>Renewable energy forecasting using AI and IoT.</li>
+            <li>Energy storage and efficiency improvements with AI.</li>
+          </ul>
+        </li>
+        <li>
+          <b class="text-xl text-cyan-600">Sustainable Urban Development and Smart Cities</b><br />
+          <ul class="list-disc list-inside pl-6">
+            <li>AI in urban planning and sustainable city management.</li>
+            <li>Smart transportation and eco-friendly mobility solutions.</li>
+            <li>Intelligent waste management and recycling technologies.</li>
+            <li>IoT and AI for water and energy conservation in urban areas.</li>
+          </ul>
+        </li>
+        <li>
+          <b class="text-xl text-cyan-600">Circular Economy and Green Manufacturing</b><br />
+          <ul class="list-disc list-inside pl-6">
+            <li>AI applications in lifecycle management and product design.</li>
+            <li>Optimizing recycling and waste reduction through smart technologies.</li>
+            <li>Sustainable supply chain management with AI and predictive analytics.</li>
+            <li>Eco-friendly materials and manufacturing processes.</li>
+          </ul>
+        </li>
+        <li>
+          <b class="text-xl text-cyan-600">Environmental Monitoring and Risk Assessment</b><br />
+          <ul class="list-disc list-inside pl-6">
+            <li>AI for monitoring air, water, and soil quality.</li>
+            <li>Risk prediction and management for natural disasters.</li>
+            <li>Remote sensing and geospatial AI for environmental tracking.</li>
+            <li>Integration of AI with IoT sensors for real-time data analysis.</li>
+          </ul>
+        </li>
+        <li>
+          <b class="text-xl text-cyan-600">Sustainable Agriculture and Food Security</b><br />
+          <ul class="list-disc list-inside pl-6">
+            <li>AI in precision farming and crop monitoring.</li>
+            <li>Sustainable irrigation and water resource management using AI.</li>
+            <li>Reducing food waste through smart supply chain solutions.</li>
+            <li>AI-driven innovations for organic farming and agroecology.</li>
+          </ul>
+        </li>
+        <li>
+          <b class="text-xl text-cyan-600">Ethics, Policies, and Social Impacts</b><br />
+          <ul class="list-disc list-inside pl-6">
+            <li>Ethical challenges in deploying AI for sustainability.</li>
+            <li>Policy frameworks for green computing and sustainable AI adoption.</li>
+            <li>Addressing social equity and inclusivity in green technologies.</li>
+            <li>The role of AI in achieving global sustainability goals.</li>
+          </ul>
+        </li>
+        <li>
+          <b class="text-xl text-cyan-600">Emerging Technologies and Cross-disciplinary Applications</b><br />
+          <ul class="list-disc list-inside pl-6">
+            <li>Blockchain and AI for sustainability.</li>
+            <li>Quantum computing for environmental modeling.</li>
+            <li>Bioinformatics and AI for biodiversity conservation.</li>
+            <li>Hybrid approaches combining AI, robotics, and environmental sciences.</li>
+          </ul>
+        </li>
+        <li>
+          <b class="text-xl text-cyan-600">Workshops and Tutorials</b><br />
+          <ul class="list-disc list-inside pl-6">
+            <li>Hands-on workshops on AI tools for environmental sustainability.</li>
+            <li>Tutorials on energy-efficient computing and green software development.</li>
+            <li>Real-world case studies on implementing green AI solutions.</li>
+          </ul>
+        </li>
+      </ul>
+      <p class="leading-relaxed mt-6 text-lg">
+        These tracks are designed to foster comprehensive discussions, innovative research, and collaborative solutions, addressing critical challenges and opportunities in green computing and environmental sustainability using AI.
+      </p>
+    </section>
+    
+    
+     
+    <footer class="bg-cyan-900 py-6 text-center text-white">
+      <p>
+        &copy; 2025 International Conference on Green Computing and Environmental Sustainability using Artificial Intelligence All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>
